@@ -1,23 +1,23 @@
 ## dicombot
 PACS load tester
 
-#what is dicombot?
+# what is dicombot?
 
 dicombot is a load-testing tool for PACS servers. It's developed with the goal of providing an easy-to-use solution for testing PACS servers and making sure that they are performing as expected with a high load. It uses DICOM files and communicates using DIMSE commands that are part of the DICOM standard. It can be used with any PACS server that supports DICOM communication. dicombot allows you to spin up 1, 10, 100, 1000, etc. DICOM connections at once that store and retrieve from the server automatically.
 
 
-#how do I get dicombot?
+# how do I get dicombot?
 
 dicombot is a Docker container image. You need to have Docker installed to use it. This can be done on Linux, Windows, or MacOS. Once Docker is installed, you can get dicombot from the Docker Hub using the following command:
 
  
-#docker pull scottclt/dicombot:latest
+# docker pull scottclt/dicombot:latest
  
 
 You can find out more about the container on Docker Hub, including its current vulnerabilities as scanned by Docker Scout. Please note that as of 25.04.2026, all known vulnerabilties are tied to the DICOM libraries that are used in the creation of dicombot. Those libraries will need to be updated before the vulnerabilities can be resolved in the Docker Scout scan.
 
 
-#ok, i've got the dicombot image. how do i use it?
+# ok, i've got the dicombot image. how do i use it?
 
 dicombot should be started from the terminal/command prompt. It requires 7 environment variables (and an optional 8th) to be passed on either the "docker run" or "docker service create" command. The environment variables are:
 
@@ -43,7 +43,7 @@ docker service create --name dicombotSwarm --replicas 20 --env IPADDRESS="10.1.1
  
 
 
-#tell me more about dicombot - what does it do exactly?
+# tell me more about dicombot - what does it do exactly?
 
 dicombot uses either a prepackaged set of 595 anonymized MR DICOM files OR a folder of DICOM files provided on the host machine (if the volume is mounted and the DICOMFILES="1" environment variable is passed) and operates in four steps:
 Assigns new random SOP Instance, Series Instance, and Study Instance UIDs to the set of files. Also assigns a random number to First Name, Last Name, and Patient ID DICOM tags (first and last name are preceded by "dicombot-").
@@ -55,7 +55,7 @@ Queries Study-level for all studies using the patient ID generated in step 1.
 Retrieves (via CGET) all files stored in step 2 from the PACS server.
 
 
-#can do i use docker compose with dicombot?
+# can do i use docker compose with dicombot?
 
 Yes, of course! Docker Compose can be used with dicombot. Here's an example configuration to get you going:
 
@@ -90,6 +90,6 @@ docker compose up -d
 Tools used in this container: gdcm, dcmtk
 
 
-#i need help with dicombot
+# i need help with dicombot
 
 You can find dicombot on GitHub at https://www.github.com/scottclt/dicombot and on DockerHub at https://hub.docker.com/r/scottclt/dicombot. If you need additional assistance with dicombot, contact Scott Mallonee at scott@mallonee.org
