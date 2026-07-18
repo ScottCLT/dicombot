@@ -60,6 +60,7 @@ Retrieves (via CGET) all files stored in step 2 from the PACS server.
 Yes, of course! Docker Compose can be used with dicombot. Here's an example configuration to get you going:
 
  
+```yaml
 services:
   dicombot:
     container_name: dicombot
@@ -76,6 +77,7 @@ services:
     volumes:
       - /path/to/mount/folder:/var/dcm/mount
     restart: unless-stopped
+```
  
 
 Once you've saved that to a file called compose.yml (make sure to edit it with your environment's particular configuration), you can run Docker Compose from the directory that your compose.yml file is stored in. Here's the syntax:
